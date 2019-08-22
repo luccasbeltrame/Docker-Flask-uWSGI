@@ -34,7 +34,7 @@ pipeline {
     }
     stage('deploy kubernetes') {
       steps{
-        sh "kubectl apply -f https://raw.githubusercontent.com/cirolini/Docker-Flask-uWSGI/master/k8s_app.yaml"
+        sh "kubectl apply -f https://raw.githubusercontent.com/luccasbeltrame/Docker-Flask-uWSGI/master/k8s_app.yaml"
         sh "kubectl set image deployment app app=${dockerImage} --record"
         sh "kubectl rollout status deployment/app"  
     }

@@ -32,9 +32,9 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-    stage('deploy kubernetes') {
-      steps{
-        sh ("kubectl get po")
+    stage('Apply Kubernetes files') {
+      withKubeConfig([credentialsId: 'user1', serverUrl: 'https://api.lks.lendico.net.br']){
+        sh 'kubectl apply -f https://raw.githubusercontent.com/luccasbeltrame/Docker-Flask-uWSGI/master/k8s_app.yaml'
 
     }
   }

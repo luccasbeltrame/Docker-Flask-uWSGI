@@ -8,10 +8,8 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      nodePort: 32001
   selector:
     app: app
-  type: NodePort
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment

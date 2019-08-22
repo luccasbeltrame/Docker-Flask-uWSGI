@@ -1,22 +1,22 @@
 node {
 
     checkout scm
-
+    def dockerImage
     // Pega o commit id para ser usado de tag (versionamento) na imagem
     sh "git rev-parse --short HEAD > commit-id"
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     
-  stage('Build image') {
-    dockerImage = docker.build("luccasbeltrame/app:latest")
-  }
+    stage('Build image') {
+      dockerImage = docker.build("luccasbeltrame/app:latest")
+   }
 
-  stage('Push image') {
-    docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub') {
-      dockerImage.push()
-    }
-  }
+    stage('Push image') {
+      docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub') {
+        dockerImage.push()
+     }
+   }
 
-}
+ }
 
     stage "Deploy PROD"
 

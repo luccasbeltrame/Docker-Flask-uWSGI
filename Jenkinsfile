@@ -7,7 +7,7 @@ node {
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     
     // configura o nome da aplicação, o endereço do repositório e o nome da imagem com a versão
-    appName = "/app"
+    appName = "app"
     registryHost = "luccasbeltrame"
     imageName = "${registryHost}${appName}:${tag}"
     

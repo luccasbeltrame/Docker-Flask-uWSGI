@@ -36,7 +36,7 @@ pipeline {
 }
 node {
   stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'admin', serverUrl: 'https://api.kubernetes.lks.lendico.net.br']) {
+    withKubeConfig([credentialsId: 'admin',usernameVariable:'admin', passwordVariable:'6WnLo7aoCYpEZzNVoQTyAfOt689b9yHo',  serverUrl: 'https://api.kubernetes.lks.lendico.net.br']) {
       sh 'kubectl get po'
     }
   }

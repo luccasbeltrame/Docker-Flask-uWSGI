@@ -8,7 +8,7 @@ node {
     
     // configura o nome da aplicação, o endereço do repositório e o nome da imagem com a versão
     appName = "app"
-    registryHost = "https://github.com/luccasbeltrame/Docker-Flask-uWSGI.git"
+    registryHost = "docker.io/luccasbeltrame"
     imageName = "${registryHost}${appName}:${tag}"
     
     // Configuramos os estágios

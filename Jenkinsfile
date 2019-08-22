@@ -6,27 +6,22 @@ node {
     sh "git rev-parse --short HEAD > commit-id"
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     
-    // configura o nome da aplicação, o endereço do repositório e o nome da imagem com a versão
-    appName = "app"
-    registryHost = "luccasbeltrame"
-    registryCredential = "dockerhub"
-    imageName = "${registryHost}/${appName}:${tag}"
-    
-    // Configuramos os estágios
-    
-    stage "Build"
+  stage('Build image') {
+    dockerImage = docker.build("luccasbeltrame/app:latest")
+  }
 
-        def customImage = docker.build("${imageName}")
+  stage('Push image') {
+    docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub') {
+      dockerImage.push()
+    }
+  }
 
-    stage "Push"
-
-        customImage.push()
-
+}
 
     stage "Deploy PROD"
 
         input "Deploy to PROD?"
-        customImage.push('latest')
+        DockerImage.push('latest')
         sh "kubectl apply -f https://raw.githubusercontent.com/luccasbeltrame/Docker-Flask-uWSGI/master/k8s_app.yaml"
         sh "kubectl set image deployment app app=${imageName} --record"
         sh "kubectl rollout status deployment/app"

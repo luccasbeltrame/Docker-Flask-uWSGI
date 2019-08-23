@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    image = ${dockerImage} 
+    image = $"{dockerImage}"
     registry = "luccasbeltrame/app"
     registryCredential = 'dockerhub'
     dockerImage = ''

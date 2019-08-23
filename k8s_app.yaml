@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ${registry}/${BUILD_NUMBER}
+          image: ${registry}:${BUILD_NUMBER}
           imagePullPolicy: Always
           ports:
             - name: http

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: "docker.io/luccasbeltrame/app:latest"
+          image: ${dockerImage}
           imagePullPolicy: Always
           ports:
             - name: http

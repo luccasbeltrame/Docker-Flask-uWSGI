@@ -1,4 +1,4 @@
-nodes {
+pipeline {
   environment {
     registry = "luccasbeltrame/app"
     registryCredential = 'dockerhub'
@@ -33,12 +33,8 @@ nodes {
       }
     }
     stage('Apply Kubernetes files') {
-        kubernetesDeploy(
-        kubeconfigId: 'kubeconfig'
-        ) 
-    stage('execute'){
-         sh 'kubectl get po'
+         sh ("kubectl get po")
     }
   }
 }
-}
+

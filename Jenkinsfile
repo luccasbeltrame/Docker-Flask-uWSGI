@@ -32,10 +32,10 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-  stage('Apply Kubernetes files') {
-    steps {
-    kubernetesDeploy(kubeconfigId: "kubeconfig") {
-      sh 'kubectl get po'
+    stage('Apply Kubernetes files') {
+      steps {
+        kubernetesDeploy("kubeconfigId": "kubeconfig") {
+         sh 'kubectl get po'
     }
   }
 }

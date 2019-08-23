@@ -34,10 +34,7 @@ pipeline {
     }
     stage('Apply Kubernetes files') {
       steps{
-          kubernetesDeploy(
-             kubeConfig: [path: 'kubeconfig'],
-          ) 
-         sh ("kubectl get po")
+         sh 'kubectl get po'
     }
   }
 }

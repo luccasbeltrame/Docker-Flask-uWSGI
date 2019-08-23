@@ -1,6 +1,5 @@
 pipeline {
   environment {
-    kubeconfig = 'kubeconfig2'
     registry = "luccasbeltrame/app"
     registryCredential = 'dockerhub'
     dockerImage = ''
@@ -36,7 +35,7 @@ pipeline {
     stage('Apply Kubernetes files') {
       steps{
           kubernetesDeploy(
-             kubeconfigId: 'kubeconfig'
+             kubeconfigId: 'kubeconfig2'
           ) 
          sh ("kubectl get po")
     }

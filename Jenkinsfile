@@ -33,7 +33,7 @@ pipeline {
       }
     }
   stage('Apply Kubernetes files') {
-    kubernetesDeploy(kubeconfigId: 'kubeconfig',) {
+    kubernetesDeploy(kubeconfigId: 'kubeconfig') {
       sh 'kubectl get po'
     }
   }

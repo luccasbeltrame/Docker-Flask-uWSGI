@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ${dockerImage}
+          image: ${image}
           imagePullPolicy: Always
           ports:
             - name: http

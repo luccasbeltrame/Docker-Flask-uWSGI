@@ -1,4 +1,4 @@
-pipeline {
+nodes {
   environment {
     registry = "luccasbeltrame/app"
     registryCredential = 'dockerhub'

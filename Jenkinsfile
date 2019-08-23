@@ -33,8 +33,9 @@ pipeline {
       }
     }
     stage('Apply Kubernetes files') {
+      steps{ 
          sh ("kubectl get po")
     }
   }
 }
-
+}

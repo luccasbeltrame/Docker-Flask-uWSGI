@@ -1,5 +1,6 @@
 pipeline {
   environment {
+    kubeconfigId = 'kubeconfig'
     registry = "luccasbeltrame/app"
     registryCredential = 'dockerhub'
     dockerImage = ''

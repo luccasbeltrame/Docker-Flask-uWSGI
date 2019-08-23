@@ -34,7 +34,11 @@ pipeline {
     }
     stage('Apply Kubernetes files') {
       steps{
-         sh 'kubectl get po'
+         kubernetesDeploy(
+             kubeconfigId: 'kubeconfig',
+             configs: 'k8s_app.yaml',
+             enableConfigSubstitution: true
+         )
     }
   }
 }
